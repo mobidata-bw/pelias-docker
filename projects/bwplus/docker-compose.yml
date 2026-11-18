@@ -32,7 +32,7 @@ services:
     ports: [ "127.0.0.1:4100:4100" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
       - "./blacklist/:/data/blacklist"
   whosonfirst:
     image: pelias/whosonfirst:master
@@ -40,28 +40,28 @@ services:
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
   openstreetmap:
     image: pelias/openstreetmap:master
     container_name: pelias_openstreetmap
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
   openaddresses:
     image: pelias/openaddresses:master
     container_name: pelias_openaddresses
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
   csv-importer:
     image: pelias/csv-importer:master
     container_name: pelias_csv_importer
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
       - "./blacklist/:/data/blacklist"
   polylines:
     image: pelias/polylines:master
@@ -69,7 +69,7 @@ services:
     user: "${DOCKER_USER}"
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
   interpolation:
     image: pelias/interpolation:master
     container_name: pelias_interpolation
@@ -79,7 +79,7 @@ services:
     ports: [ "127.0.0.1:4300:4300" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
   pip:
     image: pelias/pip-service:master
     container_name: pelias_pip-service
@@ -89,7 +89,7 @@ services:
     ports: [ "127.0.0.1:4200:4200" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "${DATA_DIR}:/data"
+      - "${DATA_DIR}:/data:z"
   elasticsearch:
     image: pelias/elasticsearch:7.17.27
     container_name: pelias_elasticsearch
